@@ -24,7 +24,7 @@ public class PhonebookAdapter extends RecyclerView.Adapter<PhonebookAdapter.View
     // Adapter는 리스트에서 다룰 데이터가 필요하다
     // Adapter가 데이터에 연결되어야 하는 것은 사실이나, 데이터를 Adapter를 직접 다룰지
     // 아니면 별도의 데이터 관리는 따로 하는 구조로 만들지는 선택의 몫
-    // 본 예제에서는 Adapter 안에 직접 데이터를 다루어보겠습니다
+    // 본 예제에서는 Adapter 안에 직접 데이터를 다루어보겠습니다.
 
     List<Phonebook> items = new ArrayList<Phonebook>();
 

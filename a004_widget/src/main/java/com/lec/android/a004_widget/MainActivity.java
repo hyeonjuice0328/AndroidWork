@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 if(hasFocus){
                     ((EditText)v).setBackgroundColor(Color.YELLOW);
                 } else {
-                    // 투명색으로 변경하는 방법
+                    // 다시 원래 색으로 돌아오게 하기 위해 > 투명색으로 변경
                     ((EditText)v).setBackgroundColor(Color.parseColor("#00000000"));
                 }
             }
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 값의 변화 (입력 완료)
+        // 값의 변화 (입력 완료 후 확인 -> actionId 값 출력)
         etEmail.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

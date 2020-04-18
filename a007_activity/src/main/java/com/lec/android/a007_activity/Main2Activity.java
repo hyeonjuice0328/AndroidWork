@@ -37,7 +37,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(
-                        getApplicationContext(), // 현재 화면에 제어권자
+                        getApplicationContext(), // 현재 에뮬레이터 화면에 제어권자
                         MyTwo.class              // 다음 화면의 엑티비티 클래스 지정
                 );
 

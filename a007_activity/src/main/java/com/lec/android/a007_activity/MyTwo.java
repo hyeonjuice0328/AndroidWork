@@ -18,10 +18,9 @@ public class MyTwo extends AppCompatActivity {
         Button btnFinish = findViewById(R.id.btnFinish);
 
         btnFinish.setOnClickListener(new View.OnClickListener() {
-            @Override
+            @Override // 액티비티 종료
             public void onClick(View v) {
-                finish();       // 액티비티 종료
-            }
+                finish(); }
         });
 
         // 인텐트에 담겨서 넘어온 객체를 받는다.
@@ -30,7 +29,6 @@ public class MyTwo extends AppCompatActivity {
         int a = intent.getIntExtra("num", 0);
         // num 이라는 name 으로 넘어온 값
         // 만약 num 이라는 name 이 인텐트에 없으면 디폴트값 즉 두번째 매개변수를 리턴.
-
         int b = intent.getIntExtra("num2", 0);
         int c = intent.getIntExtra("num3", 999); // num3 라는 이름으로 보낸적 없음
         long l = intent.getLongExtra("long", 0);
@@ -41,8 +39,7 @@ public class MyTwo extends AppCompatActivity {
         TextView tv1 = findViewById(R.id.tv1);
         tv1.setText("인텐트 받은 값 : " + a + " : " + b + " : " + c +  " : " + l +  " : " + msg );
 
-        // Person 데이터 받기
-        // 오브젝트 리턴하기 때문에 Person 으로 형변환!!
+        // Person 데이터 받기 : 오브젝트 리턴하기 때문에 Person 으로 형변환!!
         Person p = (Person)intent.getSerializableExtra("Person");
 
         //화면에 출력하기
@@ -55,9 +52,7 @@ public class MyTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
-                startActivity(intent);
-            }
+                startActivity(intent); }
         });
-
    } // end onCreate()
 } // end Activity

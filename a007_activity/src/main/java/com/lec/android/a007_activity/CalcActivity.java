@@ -25,5 +25,4 @@ public class CalcActivity extends AppCompatActivity {
 
         finish(); // onDestroy() 를 호출한 것과 동일
     }
-
 }

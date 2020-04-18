@@ -16,9 +16,10 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     // 이미지의 아이디값(정수)를 담을 배열을 생성하기
-    int [] imageId = {R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4, R.drawable.a5, R.drawable.a6};
+    int [] imageId = {R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4,
+            R.drawable.a5, R.drawable.a6};
     ImageView iv;
-
+    // 이미지를 클릭 할 때 동작하는 이벤트
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
         // 리소스의 drawable 폴더에 있는 이미지로 세팅하기
         iv.setImageResource(R.drawable.a1);
-        // 이미지를 클릭 할 때 동작하는 이벤트
 
         // 이미지 뷰에 리스너 장착
         iv.setOnClickListener(new MyListener());
-
 
     } // onCreate() : activity 가 생성될 때 실행 (초기화)
 
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
             iv.setImageResource(imageId[i]);
             tvResult.setText("이미지뷰: " + i);
             //리스너 객체 완성  ---> Oncreate() 에 가서 이미뷰에 장착
-
         }
     }
 } // end Activity

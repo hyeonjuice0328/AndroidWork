@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 // 프로그래스바가 100까지 도달 했을 때 다시 처음으로 돌아가는 작동을 하게 만들어보자
                 if(value > 100 || value < 0) {
                     add = -add; // 거꾸로 감소
-                    // value = -add;  처음으로 돌아가는 작동
+                    //value = -add; // 처음으로 돌아가는 작동
                 }
                 pb2.setProgress(value); // 프로그레스바의 진행값 설정
             }
@@ -69,8 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     value2 = value2 + add2; // value2 는 0.1초마다 1씩 증가
 
                     if(value2 > 100 || value2 < 0) {
-                        add2 = -add2; // 거꾸로 감소
-                        //value = -add2; //처음으로 돌아간다.
+                        //add2 = -add2; // 거꾸로 감소
                     }
 
                     // 별도의 작업 Thread 에서 메인 UI 접근 하려면 반드시 Handler 사용해야한다!
@@ -84,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         Thread.sleep(100); // 0.1 초 단위
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                        e.printStackTrace(); }
                 }
             }
         });

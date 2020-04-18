@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAction;
 
 
-    //액티비티가 생성될 때 호출
-    //주로 사용자 인터페이스 초기화에 사용
+    //액티비티가 생성될 때 호출 : 주로 사용자 인터페이스 초기화에 사용
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,10 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 // 정수형으로 형변환한 값은 int a, b 에 넣어서 산술연산한다.
                 tvResult.setText("" + (a + b));
                 // tvResult.setText(a + b)하면 안된다. setText 는 정수타입이 아니다.
-
             }
         });
-
     } // end onCreate
 
     // 액티비티가 사용자에게 보여지기 시작할때(바로직전) 호출
@@ -123,8 +120,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Log.d("myapp", "onRestoreInstanceState");
-        if(savedInstanceState != null) { // 직전에 저장되어 있던 액티비티의 상태정보가 있다면 not null
-            tvResult.setText(savedInstanceState.getString("value")); // 백업되더있던 "value" 값을 가져온다.
+        if(savedInstanceState != null) {
+            // 직전에 저장되어 있던 액티비티의 상태정보가 있다면 not null
+            tvResult.setText(savedInstanceState.getString("value"));
+            // 백업되더있던 "value" 값을 가져온다.
         }
 
 
@@ -137,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         Log.d("myapp", "onSaveInstanceState");
-        outState.putString("value", tvResult.getText().toString()); // Bundle 객체 outState 에 값저장
+        outState.putString("value", tvResult.getText().toString());
+        // Bundle 객체 outState 에 값저장
     }
 } // end Activity

@@ -43,10 +43,8 @@ public class Main3Activity extends AppCompatActivity {
 
                 //값을 돌려받기 위한 화면전환
                 startActivityForResult(intent, REQUEST_CODE_CALC);
-
             }
         });
-
     } // end onCreate()
 
     // startActivityForResult()로 넘어갔던 화면으로부터 결과값을 돌려받으면 호출되는 메소드

@@ -23,8 +23,7 @@
         android:rating="2.5"
         android:stepSize="0.5"
         android:isIndicator="false"/>
-        <!-- isIndicator : 사용자에 의해 바뀔 수 있는 존재인가 아닌가 여부
-                           true 하면 사용자가 조작할수 없다.
+    <!-- isIndicator : 사용자에 의해 바뀔 수 있는 존재인가 여부 true 하면 사용자가 조작할수 없다.
         android:layout_width="wrap_content"
         android:numStars="4" : wrap_content로 설정해야 numStar 가 제대로 적용이 된다.-->
 
@@ -34,6 +33,5 @@
         android:layout_height="wrap_content"
         android:text="결과값"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
 
 </LinearLayout>
