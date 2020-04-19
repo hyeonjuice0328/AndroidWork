@@ -162,5 +162,4 @@ public class PhonebookAdapter extends RecyclerView.Adapter<PhonebookAdapter.View
     public void setItem(int position, Phonebook item) {   items.set(position, item); }
     public void removeItem(int position){ items.remove(position); }
 
-
 } // end Adapter
