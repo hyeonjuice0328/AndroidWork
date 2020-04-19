@@ -9,31 +9,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
 
-    Information adapter; // Adapter 객체
+    InfoAdapter adapter; // Adapter 객체
     RecyclerView rv;
     EditText etName, etAge, etAdd;
-
-    private final int REQUEST_CODE_I = 101; //값을 돌려받기 위해 필요한 코드값.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       rv = findViewById(R.id.rv);
-       RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-       rv.setLayoutManager(layoutManager);
-
-       etName = findViewById(R.id.etName);
+        etName = findViewById(R.id.etName);
         etAge = findViewById(R.id.etAge);
         etAdd = findViewById(R.id.etAdd);
 
-       adapter = new Information();
+        rv = findViewById(R.id.rv);
 
-       //initAdapter(adapter); //  초기화??
+       RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+       rv.setLayoutManager(layoutManager);
+
+        // Adapter 객체 생성
+        adapter = new InfoAdapter();
 
         rv.setAdapter(adapter);
 
@@ -42,24 +42,16 @@ public class MainActivity extends AppCompatActivity {
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(
-                        getApplicationContext(),
-                        I.class
-                );
-            startActivityForResult(intent, REQUEST_CODE_I);}
+                etName.getText().toString();
+                etAge.getText().toString();
+                etAdd.getText().toString();
+
+                adapter.addItem(new Information(etName.getText().toString(), etAge.getText().toString(), etAdd.getText().toString()));
+                adapter.notifyDataSetChanged();
+
+            }
         });
 
 
     } // end onCreate()
-
-    //데이터 가져오기
-    protected void initAdapter(InfoAdapter adapter) {
-        // 생성되는만큼 가져오기
-
-    }
-
-    protected void insertDate(View v){
-        int idx = I.next();
-        adapter.addItem
-    }
 } // end Activity

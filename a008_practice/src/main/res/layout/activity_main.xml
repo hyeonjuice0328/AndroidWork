@@ -7,87 +7,104 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="200dp"
+        app:cardBackgroundColor="#AFAFB0"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:text="이름 :"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="이름 : "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#FFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/etName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="173dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:textColor="#4527A0"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintStart_toEndOf="@+id/tvName"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:text="나이 :"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="나이 : "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#FFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
             <EditText
                 android:id="@+id/etAge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="178dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
                 android:ems="10"
-                android:inputType="number" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:textColor="#4527A0"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintStart_toEndOf="@+id/tvAge"
+                app:layout_constraintTop_toBottomOf="@+id/etName" />
 
             <TextView
-                android:id="@+id/tvAdd"
+                android:id="@+id/tvname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:text="주소 :"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="주소 : "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#FFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAge" />
 
             <EditText
                 android:id="@+id/etAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="178dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPostalAddress" />
-        </LinearLayout>
+                android:textColor="#4527A0"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintStart_toEndOf="@+id/tvname"
+                app:layout_constraintTop_toBottomOf="@+id/etAge" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
         <Button
             android:id="@+id/btnInsert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FFC107"
             android:elevation="10dp"
             android:padding="5dp"
             android:text="추가"
+            android:textColor="#FFFF"
             android:textSize="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -95,5 +112,3 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
-
-</LinearLayout>
