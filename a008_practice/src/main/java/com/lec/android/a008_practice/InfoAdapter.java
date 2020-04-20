@@ -66,6 +66,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
 
         } // end ViewHolder 생성자
 
+        // 입력한 정보 set 하기
         public void setItem(Information item) {
             tvName.setText(item.getName());
             tvAge.setText(item.getAge());
@@ -73,6 +74,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
         }
     } // end ViewHolder class
 
+    // 추가하는 동작, 지우는 동작
     public void addItem(Information item) { items.add(item);}
     public void removeItem(int position) { items.remove(position);}
 
