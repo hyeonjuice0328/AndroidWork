@@ -43,43 +43,32 @@ public class Main2Activity extends AppCompatActivity {
         btnText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlert(DIALOG_TEXT);
-            }
-        });
-
+                showAlert(DIALOG_TEXT); }});
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlert(DIALOG_LIST);
-            }
-        });
-
+                showAlert(DIALOG_LIST); }});
         btnRadio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlert(DIALOG_RADIO);
-            }
-        });
-
+                showAlert(DIALOG_RADIO); }});
         btnMultiChoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlert(DIALOG_MULTICHOICE);
-            }
-        });
-
-
+                showAlert(DIALOG_MULTICHOICE); }});
     }// end onCreate
 
     // 1 ~ 4
     protected AlertDialog.Builder showAlert(int id) { // 특정 정수타입을 받아서 띄우는 기능
 
         switch (id) {
+
             case DIALOG_TEXT:
-                AlertDialog.Builder builder1 = /**Builder setting**/
-                        new AlertDialog.Builder(this); // 제어권자, 테마(배경디자인)
+                AlertDialog.Builder builder1 =
+                        new AlertDialog.Builder(this, android.app.AlertDialog.THEME_HOLO_DARK);
+
                 builder1.setTitle("다이얼로그 제목임")
-                        .setMessage("안녕들하세요")
+                        .setMessage("안녕들 하세요~?")
                         .setPositiveButton("긍정", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -98,34 +87,42 @@ public class Main2Activity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "중립", Toast.LENGTH_LONG).show();
                             }
                         })
-                        ;
-                builder1.show();    // 다이얼로그 보이기
+
+                ;
+                builder1.show();  // 다이얼로그 보이기
                 return builder1;
+
             case DIALOG_LIST:
                 AlertDialog.Builder builder2
                         = new AlertDialog.Builder(this);
-                final String str[] = {"사과", "딸기", "수박", "배"};
+
+                final String [] str = {"사과", "딸기", "수박", "배"};
                 builder2.setTitle("리스트 형식 다이얼로그 제목")
                         .setNegativeButton("취소", null)
-                        .setItems(str // str :  리스트 목록에 사용할 배열
-                                , new DialogInterface.OnClickListener() {
-                            // OnClickListener : 선택되었을 때 동작하는 onClickListener
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) { // int which : 몇번째 선택되었는지에 대한 값
-                                Toast.makeText(getApplicationContext(), "선택은:" + str[which], Toast.LENGTH_LONG).show();
-                            }
-                        })
-                        ;
+                        .setItems(str,  // 리스트 목록에 사용할 배열
+
+                                new DialogInterface.OnClickListener() {
+                                    // 리스트 아이템이 선택되었을때 호출되는 콜백
+                                    // which : 몇번째 선택되었는지 에 대한 값
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Toast.makeText(getApplicationContext(), "선택은:" + str[which],  Toast.LENGTH_LONG).show();
+                                    }
+                                })
+                ;
+
                 builder2.show();
                 return builder2;
+
             case DIALOG_RADIO:
-                //커스텀 스타일 적용하기
-                AlertDialog.Builder builder3 =           // style.xml 편집해서 AlertDialogCustom 를 임의로 만듬
+                // 커스텀 스타일 적용.  styles.xml 편집
+                AlertDialog.Builder builder3 =
                         new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
+
                 final String [] str2 = {"빨강", "녹색", "파랑"};
                 builder3.setTitle("색을 고르세요")
                         .setPositiveButton("선택완료",
-                                //  ok 버튼을 눌렀을 때
+
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -133,20 +130,21 @@ public class Main2Activity extends AppCompatActivity {
                                     }
                                 })
                         .setNegativeButton("취소", null)
-                        .setSingleChoiceItems( // Radio 에 있는
-                                str2    //리스트 배열 목록
-                                ,-1 // 기본설정값
-                                ,new DialogInterface.OnClickListener() {
-                                    // 라디오 버튼에서 선택했을 때 호출되는 콜백
-                                    @Override // 선택된 값 - which
+                        .setSingleChoiceItems(
+                                str2   // 리스트 배열 목록
+                                , -1   // 기본설정값
+                                , new DialogInterface.OnClickListener() {
+                                    // 라디오 버튼에서 선택했을때 호출되는 콜백
+                                    @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        choice = which; // 선택된 값을 choice 가 기억한다.
+                                        choice = which;
                                     }
                                 }
                         )
-                        ;
+                ;
                 builder3.show();
                 return builder3;
+
             case DIALOG_MULTICHOICE: // 체크박스 형태
                 AlertDialog.Builder builder4
                         = new AlertDialog.Builder(this);
@@ -185,7 +183,4 @@ public class Main2Activity extends AppCompatActivity {
         } // end switch
         return null;
     }
-
-
-
 } // end Activity
