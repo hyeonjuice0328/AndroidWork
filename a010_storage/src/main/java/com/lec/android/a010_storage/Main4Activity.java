@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -91,14 +92,38 @@ public class Main4Activity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String name = etName.getText().toString();
+                String age = etAge.getText().toString();
+                String address = etAddress.getText().toString();
 
+                if("".equals(name)){
+                    tvResult.setText("UPDATE 실패: 필수 항목 입려하세요.");
+                    return;
+                }
+                //age 값 parseInt
+
+                int a = 0;
+                try{
+                    a = Integer.parseInt(age);
+                } catch (NumberFormatException e) {
+                    tvResult.setText("UPDATE 실패: age는 숫자로 입력하세요.");
+                }
+
+                update(name, a, address);
             }
+
         });
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String name = etName.getText().toString();
 
+                if("".equals(name)){
+                    tvResult.setText("DELETE 실패: 삭제할 이름을 입력하세요");
+                    return;
+                }
+                delete(name);
             }
         });
 
@@ -148,9 +173,46 @@ public class Main4Activity extends AppCompatActivity {
             tvResult.append("\n" + msg);
         } // end while
 
+        // 화면에서 키보드 내리기
+        InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
     } // end select()
 
+    void update(String name, int age, String address){
+        ContentValues values = new ContentValues();
 
+        values.put("age", age);     // 변경할 값
+        values.put("address", address);
+
+        // 변경할 값을 contentvalues 에 넣는다.
+
+        // 그리고 update 진행
+        // UPDATE student SET age = ? , address = ? WHERE name = ?
+        // return 값은 affected rows
+        int cnt = db.update(tableName,    // 테이블명
+                values,         // 변경할 값들
+                "name=?", // Where 조건절
+                new String[]{name}  // where 조건절이 ? 에 들어갈 값들
+                );
+        String msg = cnt + "개의 row update 성공";
+        tvResult.setText(msg);
+        select();
+    } // end update
+
+    //특정 name 값을 가진 레코드(들) 삭제
+    void delete (String name) {
+
+        // 리턴값은 affected rows : 몇개의 행이 delete 가 되는지 나온다.
+        int cnt = db.delete(tableName,
+                "name=?",   // Where 조건절
+                new String[]{name}     // 위 조건절의 ? 안에 들어갈 값
+                );
+        String msg = cnt + "개의 row delete 성공";
+        tvResult.setText(msg);
+        Log.d("myapp", msg);
+        select();
+    }
 } // end Activity
 
 /**
