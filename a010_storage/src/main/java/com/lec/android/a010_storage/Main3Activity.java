@@ -48,10 +48,8 @@ public class Main3Activity extends AppCompatActivity {
             Log.e("myapp", "데이터베이스를 얻어올 수 없음");
             finish(); //액티비티 종료
         }
-
-//        insert();;
-
-//        select();
+        insert();
+        select();
         update();
         select();
         delete();

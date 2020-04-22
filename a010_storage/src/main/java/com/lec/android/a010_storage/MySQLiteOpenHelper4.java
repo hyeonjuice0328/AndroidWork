@@ -10,7 +10,8 @@ import androidx.annotation.Nullable;
 // SQLiteOpenHelper
 // 안드로이드에서 SQLite3 데이터베이스를 좀더 쉽게 사용할수 있도록 제공되는 클래스
 public class MySQLiteOpenHelper4 extends SQLiteOpenHelper {
-    public MySQLiteOpenHelper4(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public MySQLiteOpenHelper4(@Nullable Context context, @Nullable String name,
+                               @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         // 언제 생성되는지 확인해보기
         Log.d("myapp", "SQLiteOpenHelper 생성");
@@ -26,12 +27,10 @@ public class MySQLiteOpenHelper4 extends SQLiteOpenHelper {
         String sql = "CREATE TABLE student (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "name TEXT , age INTEGER, address TEXT "+
-                ")"
-                ;
+                ")" ;
         // 실행시키기 SQLiteDatabase db 를 받아서 사용
         db.execSQL(sql);
     }
-
     // 데이터베이스의 버전이 바뀌었을 때 호출되는 콜백 메소드
     // 버전 이 바뀌었을 때 이미 기존에 설치 운영되고 있는 데이터 베이스를 어떻게 변경할 것인지 작성
     // 각 버전의 변경 내용들을 버전마다 작성해야함 .

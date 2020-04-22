@@ -23,7 +23,9 @@
         <activity android:name=".Main4Activity">
 
         </activity>
-        <activity android:name=".Main3Activity" />
+        <activity android:name=".Main3Activity" >
+
+        </activity>
         <activity android:name=".Main2Activity"></activity>
         <activity android:name=".MainActivity" />
     </application>

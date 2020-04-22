@@ -9,7 +9,8 @@ import androidx.annotation.Nullable;
 // SQLiteOpenHelper
 // 안드로이드에서 SQLite3 데이터베이스를 좀더 쉽게 사용할수 있도록 제공되는 클래스
 public class MySQLiteOpenHelper3 extends SQLiteOpenHelper {
-    public MySQLiteOpenHelper3(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public MySQLiteOpenHelper3(@Nullable Context context, @Nullable String name,
+                               @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         // 언제 생성되는지 확인해보기
         Log.d("myapp", "SQLiteOpenHelper 생성");
