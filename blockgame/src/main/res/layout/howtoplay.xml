@@ -7,6 +7,7 @@
     android:background="@drawable/main"
     tools:context=".HowToPlay">
 
+<<<<<<< HEAD
 
     <TextView
         android:id="@+id/textView"
@@ -18,11 +19,23 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.58"
+=======
+    <TextView
+        android:id="@+id/textView"
+        android:background="#CCFFFFFF"
+        android:layout_width="315dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="60dp"
+        android:text="떨어지는 블럭과\n같은 색깔의 버튼을 누르세요."
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+>>>>>>> origin/master
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnBack"
+<<<<<<< HEAD
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
@@ -31,3 +44,25 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+        android:layout_width="133dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="56dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> origin/master

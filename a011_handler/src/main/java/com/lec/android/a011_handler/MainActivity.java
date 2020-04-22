@@ -47,8 +47,10 @@ public class MainActivity extends AppCompatActivity {
         tvBackValue2.setText("작업스레드1 값: " + backValue2);
 
         BackThread thread1 = new BackThread();
-        thread1.setDaemon(true);    // 메인쓰레드가 끝나며 같이 끝난다. (메인스레드와 종료 동기화)
-        thread1.start();        // 작업 스레드 시작
+        thread1.setDaemon(true);
+        // 메인쓰레드가 끝나며 같이 끝난다. (메인스레드와 종료 동기화)
+        thread1.start();
+        // 작업 스레드 시작
 
         BackRunnable runnable = new BackRunnable();
         Thread thread2 = new Thread(runnable);
@@ -98,8 +100,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
-
-
-
 } // end Activity
