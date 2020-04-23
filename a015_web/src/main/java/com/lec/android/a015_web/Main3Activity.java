@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,47 +14,49 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-/* HTTP 요청하기
-   - 메니페스트 설정 하기 : android.permission.INTERNET 권한 (위험권한 아닌 일반권한)
-   - <application> 에 추가 usesCleartextTraffic="true"
-       HTTP 와 같은 cleartext 네트워크 트래픽을 사용할지 여부를 나타내는 flag 로
-       이 플래그가 flase 로 되어 있으면, 플랫폼 구성 요소 (예 : HTTP 및 FTP 스택, DownloadManager, MediaPlayer)는
-       일반 텍스트 트래픽 사용에 대한 앱의 요청을 거부하게 됩니다. 이 flag 를 설정하게 되면 모든 cleartext 트래픽은 허용처리가 됩니다
 
-   - URL 객체 만들기 -> HttpURLConnection 객체 만들기
-       setXXX() 메소르도 Conneciton 세팅
-           ex) setRequestMethod(method) :  "GET" "POST " 등의 문자열
-           ex) setRequestProperty(field, value) :
+/*
+■서울시 지하철 역사 정보
+http://data.seoul.go.kr/dataList/datasetView.do?infId=OA-12753&srvType=A&serviceKind=1&currentPageNo=1
 
-   - request 는 별도의 Thread 로 진행!
-   - 위 Thread 에서 화면 UI 접근하려면 (당연히) Handler 사용
+샘플url
+
+XML 버젼
+http://swopenAPI.seoul.go.kr/api/subway/7848716d426a6a7539307444475842/xml/stationInfo/1/5/서울
+
+JSON 버젼
+http://swopenAPI.seoul.go.kr/api/subway/7848716d426a6a7539307444475842/json/stationInfo/1/5/서울
 */
+public class Main3Activity extends AppCompatActivity {
 
-public class MainActivity extends AppCompatActivity {
-
-    EditText etUrl;
     TextView tvResult;
-    Button btnRequest, btnClear;
+    EditText editText;
+    Button btnJSON, btnXML, btnParse;
 
     Handler handler = new Handler();
+    String urlStr;
+
+    public static final String REQ_SERVICE = "stationList"; // 서비스 이름
+    public static final String API_KEY = "7848716d426a6a7539307444475842"; // 내 키값
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main3);
 
-        etUrl = findViewById(R.id.etUrl);
         tvResult = findViewById(R.id.tvResult);
+        editText = findViewById(R.id.editText);
+        btnJSON = findViewById(R.id.btnJSON);
+        btnXML = findViewById(R.id.btnXML);
+        btnParse = findViewById(R.id.btnParse);
 
-        btnRequest = findViewById(R.id.btnWebView);
-        btnClear = findViewById(R.id.btnBrowser);
+        urlStr = "";
 
-        btnRequest.setOnClickListener(new View.OnClickListener() {
+        btnXML.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String urlStr = etUrl.getText().toString();
+              //  urlStr = ;
                 // HTTP request 는 별도의 Thread 로 진행해야한다.
                 new Thread(new Runnable() {
                     @Override
@@ -65,14 +68,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvResult.setText("");   //내용 지우기
-            }
-        });
 
-    } // end  onCreate
+
+
+
+    } // end onCreate()
+
+    public static String buildUrlAddress(String statnNM)
+            throws IOException {
+        String urlStr = String.format("http://swopenAPI.seoul.go.kr/api/subway/7848716d426a6a7539307444475842/xml/stationInfo/1/5/%s",
+                statnNM);
+
+        return urlStr;
+    }
+
+
 
     public void request(String urlStr) {
         final StringBuilder sb = new StringBuilder();
@@ -116,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                tvResult.setText("응답 > " + sb.toString());
+                tvResult.setText(sb.toString());
             }
         });
 
