@@ -90,7 +90,6 @@ public class Main2Activity extends AppCompatActivity {
                     e.printStackTrace();
                     Log.d("myapp", e.getMessage());
                 }
-
             }
         });
 
@@ -116,8 +115,6 @@ public class Main2Activity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
             }
         });
 
@@ -138,7 +135,6 @@ public class Main2Activity extends AppCompatActivity {
                     // 권한이 없으면 더이상 진행못하게 하든지 다른 조치를 취해야 한다.
                     // onDestroy();
                 }
-
                 return;
         } // end switch
 
@@ -171,7 +167,5 @@ public class Main2Activity extends AppCompatActivity {
             Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
             return false;
         }
-
     }
-
 } // end Activity
