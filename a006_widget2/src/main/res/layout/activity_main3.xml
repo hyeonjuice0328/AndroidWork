@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:thumb="@mipmap/ic_launcher"
-        android:max="200"
+        android:max="100"
         android:progress="50"/> // 처음 시작 위치
 
 </LinearLayout>

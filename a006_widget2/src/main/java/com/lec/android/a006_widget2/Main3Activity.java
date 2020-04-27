@@ -14,7 +14,7 @@ public class Main3Activity extends AppCompatActivity {
     SeekBar seekBar;
 
     int value = 0;
-    int add = 2;
+    int add = 1;
 
     Handler handler = new Handler();
 
@@ -32,7 +32,7 @@ public class Main3Activity extends AppCompatActivity {
             // fromUser : 사용자에 의한 진행값의 변화(true) 와 그렇지 않은 경우(false) 를 구분
             @Override// 값의 변화가 생겼을 때 콜백
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tvResult.setText("onProgressChanged:" + progress + "(" + fromUser + ")");
+                tvResult.setText("onProgressChanged: " + progress + " (" + fromUser + ")");
             }
 
             @Override // tracking 시작 할 때 콜백
@@ -56,7 +56,7 @@ public class Main3Activity extends AppCompatActivity {
                 while(true) {
                     value = seekBar.getProgress()  + add;
                     if(value > max || value < 0) {
-                        add = -add;
+                        value = -add;
                     }
 
                     handler.post(new Runnable() {

@@ -1,9 +1,11 @@
 package com.lec.android.a005_image;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
@@ -19,9 +21,6 @@ import java.net.URL;
  *      1. 권한을 획득한다 (인터넷에 접근할수 있는 권한을 획득한다)  - 메니페스트 파일
  *      2. 웹에 접근하려면  Thread 가 필요 : Thread 에서 웹의 이미지를 받아온다 - honeycomb(3.0) 버젼 부터 바뀜
  *      3. 외부쓰레드에서 메인 UI에 접근하려면 Handler 를 사용해야 한다.
- *
- *
- *
  */
 public class Main4Activity extends AppCompatActivity {
 
@@ -46,13 +45,13 @@ public class Main4Activity extends AppCompatActivity {
         // url 문자열을 가지고 url 객체를 만들어서 그 안에서 inputSteam 을 뽑기
         // 안드로이드에서는 inputStream 까지 뽑고 이를 Bitmap 객채로 만든다.
 
-        // Thread t = new Thread(Runnavble);
+        // Thread t = new Thread(Runnable);
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     // Thread 없이 사용하면 에러 발생
-                    // TODO : 에러 이름 확인하기
+                    // android.os.NetworkOnMainThreadException 발생
                     URL url = new URL(imgUrl);
                     InputStream in = url.openStream();
                     final Bitmap bm = BitmapFactory.decodeStream(in);
